@@ -102,14 +102,14 @@ class OlStyleParser implements StyleParser {
     const offsetX = olTextStyle.getOffsetX();
     const offsetY = olTextStyle.getOffsetY();
     const font = olTextStyle.getFont();
-    const fontSize = parseInt(font.split('px')[0]);
+    const fontSize = parseInt(font.split('px')[0], 10);
 
-      return {
-        kind: 'Text',
-        color: olFillStyle ? OlStyleUtil.getHexColor(olFillStyle.getColor() as string) : undefined,
-        size: isFinite(fontSize) ? fontSize : undefined,
-        font: [font],
-        offset: offsetX && offsetY ? [offsetX, offsetY] : [0, 0]
+    return {
+      kind: 'Text',
+      color: olFillStyle ? OlStyleUtil.getHexColor(olFillStyle.getColor() as string) : undefined,
+      size: isFinite(fontSize) ? fontSize : undefined,
+      font: [font],
+      offset: offsetX && offsetY ? [offsetX, offsetY] : [0, 0]
     };
   }
 
